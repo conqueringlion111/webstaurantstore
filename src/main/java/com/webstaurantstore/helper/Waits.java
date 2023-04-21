@@ -15,7 +15,7 @@ public class Waits extends WebstaurantCore {
         super(driver);
     }
 
-    final Duration maxWait = Duration.ofSeconds(25);
+    final Duration maxWait = Duration.ofSeconds(17);
 
     public void waitForTextPresentInElementBy(By byLocator, String textPresense) {
         WebDriverWait wait = new WebDriverWait(driver, maxWait);

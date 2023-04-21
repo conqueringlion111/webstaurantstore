@@ -2,10 +2,7 @@ package com.webstaurantstore.utils;
 
 import com.webstaurantstore.common.WebstaurantCore;
 import com.webstaurantstore.helper.Waits;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
@@ -66,7 +63,18 @@ public class SeleniumMethods extends WebstaurantCore {
     }
 
     public boolean isElementPresent(By byElemLocator) {
+        Waits wait = new Waits(driver);
+        wait.waitForVisibilityOfElementBy(byElemLocator);
         return driver.findElements(byElemLocator).size() > 0;
+    }
+
+    public boolean isAlertPresent() {
+        try {
+            driver.switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException e) {
+            return false;
+        }
     }
 
 }

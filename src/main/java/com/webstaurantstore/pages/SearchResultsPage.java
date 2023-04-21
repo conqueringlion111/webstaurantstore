@@ -4,9 +4,12 @@ import com.webstaurantstore.common.WebstaurantCore;
 import com.webstaurantstore.helper.ByConverter;
 import com.webstaurantstore.locators.SearchResultsPageLocators;
 import com.webstaurantstore.utils.SeleniumMethods;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.List;
@@ -29,6 +32,15 @@ public class SearchResultsPage extends WebstaurantCore {
     public SearchResultsPagePopUp acceptProductAccessorySubmitIfPresent() {
         if(sel.isElementPresent(SearchResultsPageLocators.PRODUCT_ACCESSORIES_FOR_POPUP_SUBMIT)) {
             sel.selClickBy(SearchResultsPageLocators.PRODUCT_ACCESSORIES_FOR_POPUP_SUBMIT);
+        }
+        return new SearchResultsPagePopUp(driver);
+    }
+
+    public SearchResultsPagePopUp acceptProductAccessorySubmitIfPresentV2() {
+        if(sel.isAlertPresent()) {
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+            driver.switchTo().defaultContent();
         }
         return new SearchResultsPagePopUp(driver);
     }
@@ -90,6 +102,11 @@ public class SearchResultsPage extends WebstaurantCore {
         SearchResultsPageLocators search = new SearchResultsPageLocators();
         sel.selClickBy(search.getProductLocatorByIndexCss(totalProdCount, driver));
         return this;
+    }
+
+    public CartPage navigateToCartPageViaTopButton() {
+        sel.selClickBy(SearchResultsPageLocators.CART_BUTTON_TOP_x);
+        return new CartPage(driver);
     }
 
     public String getItemName(By locator) {
