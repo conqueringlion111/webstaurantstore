@@ -12,19 +12,19 @@ public class ShoppingCartTest extends TestCore {
                 .navigateToLastPage()
                 .setLastItemName()
                 .addLastItemToCart()
-                .acceptProductAccessorySubmitIfPresent()
+                .acceptProductAccessorySubmitIfPresentV2()
                 .clickViewShoppingCart()
                 .verifyItemAddedToCartSuccessful();
     }
 
     @Test(dataProvider = "dataProvider", description = "test coverage for removing product from the cart")
-    public void verifyRemoveProductToCartSuccessful(String searchText, String message) {
+    public void verifyRemoveProductFromCartSuccessful(String searchText, String message) {
         homepage.fillOutSearchField(searchText)
                 .clickSearchButton()
                 .navigateToLastPage()
                 .setLastItemName()
                 .addLastItemToCart()
-                .acceptProductAccessorySubmitIfPresent()
+                .acceptProductAccessorySubmitIfPresentV2()
                 .clickViewShoppingCart()
                 .removeAllItemsFromCart()
                 .selectEmptyCartFromPopUp()

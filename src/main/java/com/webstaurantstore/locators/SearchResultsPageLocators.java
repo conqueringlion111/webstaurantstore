@@ -15,6 +15,7 @@ public class SearchResultsPageLocators {
     public static final By LAST_PAGE_BUTTON_X = By.xpath("//a[contains(@aria-label,'last page')]");
     public static final By LAST_PAGE_BUTTON_V2X = By.xpath("//a[contains(@aria-label,'last page')][contains(@class,'text-gray-')]");
     public static final By PRODUCT_ACCESSORIES_FOR_POPUP_SUBMIT = By.xpath("//div[contains(@class,'ReactModal_')]//footer//button[@type='submit']");
+    public static final By CART_BUTTON_TOP_x = By.xpath("//a[contains(@aria-label, 'Your cart')]");
     public By getPageButtonLocatorLinkText(String pageNumber, WebDriver driver) {
         WebElement locator = driver.findElement(By.linkText(pageNumber));
         ByConverter bc = new ByConverter();
